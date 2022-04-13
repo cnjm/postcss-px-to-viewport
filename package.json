@@ -1,7 +1,7 @@
 {
   "name": "cnjm-postcss-px-to-viewport",
   "description": "A CSS post-processor that converts px to viewport units (vw, vh, vmin, vmax).",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "cnjm",
   "license": "MIT",
   "scripts": {
