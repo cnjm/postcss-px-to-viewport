@@ -1,0 +1,41 @@
+{
+  "name": "cnjm-postcss-px-to-viewport",
+  "description": "A CSS post-processor that converts px to viewport units (vw, vh, vmin, vmax).",
+  "version": "0.0.1",
+  "author": "cnjm",
+  "license": "MIT",
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnjm/postcss-px-to-viewport.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cnjm/postcss-px-to-viewport/issues"
+  },
+  "homepage": "https://github.com/cnjm/postcss-px-to-viewport",
+  "devDependencies": {
+    "jasmine-node": "~1.11.0"
+  },
+  "keywords": [
+    "css",
+    "units",
+    "pixel",
+    "px",
+    "viewport",
+    "vw",
+    "vh",
+    "vmin",
+    "vmax",
+    "postcss",
+    "postcss-plugin"
+  ],
+  "dependencies": {
+    "object-assign": ">=4.0.1",
+    "postcss": ">=5.0.2"
+  },
+  "directories": {
+    "example": "example"
+  }
+}
