@@ -22,16 +22,15 @@ var defaults = {
   landscapeWidth: 568,
 };
 
-module.exports = postcss.plugin(
-  "cnjm-postcss-px-to-viewport",
-  function (options) {
-    var opts = objectAssign({}, defaults, options);
+module.exports = (options = {}) => {
+  var opts = objectAssign({}, defaults, options);
 
-    var pxRegex = getUnitRegexp(opts.unitToConvert);
-    var satisfyPropList = createPropListMatcher(opts.propList);
-    var landscapeRules = [];
-
-    return function (css) {
+  var pxRegex = getUnitRegexp(opts.unitToConvert);
+  var satisfyPropList = createPropListMatcher(opts.propList);
+  var landscapeRules = [];
+  return {
+    postcssPlugin: "cnjm-postcss-px-to-viewport",
+    Once(css) {
       css.walkRules(function (rule) {
         if (opts.customFun) {
           opts.viewportWidth = opts.customFun({ file: rule.source.input.file });
@@ -112,7 +111,6 @@ module.exports = postcss.plugin(
           }
         });
       });
-
       if (landscapeRules.length > 0) {
         var landscapeRoot = new postcss.atRule({
           params: "(orientation: landscape)",
@@ -124,9 +122,10 @@ module.exports = postcss.plugin(
         });
         css.append(landscapeRoot);
       }
-    };
-  }
-);
+    },
+  };
+};
+module.exports.postcss = true;
 
 function getUnit(prop, opts) {
   return prop.indexOf("font") === -1
